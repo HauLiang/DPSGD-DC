@@ -9,7 +9,7 @@ If you use the code, please cite our paper:
 
 ## A Fast Reproduction Guide
 
-If you want to reproduce the figures in our paper, just navigate to the `Plot_figures` folder and run the corresponding plotting script (e.g., `plot_figure_x.py`). This will generate the x-th figure demonstrated in the paper.
+If you just want to reproduce the figures in our paper, navigate to the `Plot_figures` folder and run the corresponding plotting script (e.g., `plot_figure_x.py`). This will generate the x-th figure demonstrated in the paper.
 
 
 
