@@ -3,7 +3,7 @@
 Python code for the paper "An Improved Privacy and Utility Analysis of Differentially Private SGD with Bounded Domain and Smooth Losses".
 
 If you use the code, please cite our paper:
-> [Liang, Hao and Zhang, Wanrong and He, Xinlei and Wu, Kaishun and Xing, Hong, "An Improved Privacy and Utility Analysis of Differentially Private SGD with Bounded Domain and Smooth Losses", *The 40th Annual AAAI Conference on Artificial Intelligence*, 2026.](https://openreview.net/forum?id=Zs20eeNxdb "https://openreview.net/forum?id=Zs20eeNxdb")
+> [Liang, Hao and Zhang, Wanrong and He, Xinlei and Wu, Kaishun and Xing, Hong, "An Improved Privacy and Utility Analysis of Differentially Private SGD with Bounded Domain and Smooth Losses", *The 40th Annual AAAI Conference on Artificial Intelligence*, 2026.](https://arxiv.org/abs/2502.17772 "https://arxiv.org/abs/2502.17772")
 
 
 
