@@ -22,7 +22,7 @@ epochs = np.array([50, 100, 150, 200, 250, 300, 350, 400])
 i = -1
 
 for batch_size in batch_sizes:
-    # 文件路径
+    # File path
     file_name = f'./privacy_level/epsilon_results_{batch_size}.txt'
     
     with open(file_name, 'r') as fid:
@@ -40,7 +40,7 @@ for batch_size in batch_sizes:
 
         data = np.array(data).T
 
-        i +=1
+        i += 1
         print('Handling the {}-th file'.format(i+1))
         if i+1 == 1:
             ax.plot(epochs, np.mean(data, axis=1), '-', color='darkgoldenrod', marker='o', markersize = 7, linewidth=2.5, label=r"b$=${}".format(batch_size))

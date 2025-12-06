@@ -1,9 +1,7 @@
-import h5py
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
-from scipy.io import loadmat
-import re
+
 
 plt.rcParams['mathtext.fontset'] = 'custom'
 plt.rcParams['mathtext.rm'] = 'Times New Roman'
@@ -21,7 +19,7 @@ fig, ax = plt.subplots()
 
 batch_sizes = np.array([100, 200, 300, 400, 600, 1000])
 epochs = np.arange(1, 401)
-i=-1
+i = -1
 
 for batch_size in batch_sizes:
 
@@ -42,7 +40,7 @@ for batch_size in batch_sizes:
 
         data = np.array(data).T
 
-        i +=1
+        i += 1
         print('Handling the {}-th file'.format(i+1))
         if i+1 == 1:
             ax.plot(epochs, np.mean(data, axis=1), '-', color='darkgoldenrod', linewidth=2.5, label=r"b$=${}".format(batch_size))
@@ -53,7 +51,6 @@ for batch_size in batch_sizes:
             acc_ub = acc_conf_int[1]
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='goldenrod', alpha=0.1)
 
-
         elif i+1 == 2:
             ax.plot(epochs, np.mean(data, axis=1), '--', color='darkblue', linewidth=2.5, label=r"b$=${}".format(batch_size))
 
@@ -62,8 +59,6 @@ for batch_size in batch_sizes:
             acc_lb = acc_conf_int[0]
             acc_ub = acc_conf_int[1]
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='blue', alpha=0.1)
-
-
             
         elif i +1== 3:
             ax.plot(epochs, np.mean(data, axis=1), '-.', color='darkorange', linewidth=2.5, label=r"b$=${}".format(batch_size))
@@ -73,7 +68,6 @@ for batch_size in batch_sizes:
             acc_lb = acc_conf_int[0]
             acc_ub = acc_conf_int[1]
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='orange', alpha=0.1)
-
             
         elif i +1== 4:
             ax.plot(epochs, np.mean(data, axis=1), ':', color='darkred', linewidth=2.5, label=r"b$=${}".format(batch_size))
@@ -83,8 +77,6 @@ for batch_size in batch_sizes:
             acc_lb = acc_conf_int[0]
             acc_ub = acc_conf_int[1]
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='red', alpha=0.1)
-
-
             
         elif i +1== 5:
             ax.plot(epochs, np.mean(data, axis=1), linestyle='-.', color='darkcyan', linewidth=2.5, label=r"b$=${}".format(batch_size))
@@ -96,8 +88,6 @@ for batch_size in batch_sizes:
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='cyan', alpha=0.1)
         
             ax.fill_between(epochs, acc_lb[:], acc_ub[:], color='red', alpha=0.1)
-
-
         
         elif i +1== 6:
             ax.plot(epochs, np.mean(data, axis=1), linestyle='--', color='darkviolet', linewidth=2.5, label=r"b$=${}".format(batch_size))

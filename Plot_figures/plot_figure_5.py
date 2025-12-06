@@ -1,10 +1,6 @@
-import scipy.io as sio
-import h5py
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
-from scipy.io import loadmat
-import re
 from scipy.optimize import minimize_scalar
 
 # -----------------------------

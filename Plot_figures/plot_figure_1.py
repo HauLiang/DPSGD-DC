@@ -42,12 +42,12 @@ privacy = lambda beta: (
     2 * alpha * C**2 / (beta * n * b * sigma**2)
     + alpha * (1 + eta * L)**2 * D**2 / (2 * eta**2 * sigma**2 * (1 - beta))
 )
-
 res = minimize_scalar(privacy, bounds=(1e-12, 1 - 1e-12), method='bounded')
 upper = res.fun
 
 our = 2 * alpha * C**2 / (n * b * sigma**2) * T
 our = np.minimum(our, upper)
+
 
 # ==============================
 
@@ -65,7 +65,7 @@ font = {'family': 'Times New Roman',
 
 mpl.rc('font', **font)
 
-
+# Plot figure
 fig, ax = plt.subplots()
 
 T = np.arange(0, 201)
@@ -85,10 +85,6 @@ ax.annotate(
     xytext=(x_start, y_start),
     arrowprops=dict(arrowstyle='<->', color='black', linewidth=2)
 )
-
-# ax.text(205, 3.5, 'Significant Gap',
-#         fontsize=15, color='black',
-#         ha='center', va='center')
 
 _ = ax.annotate('Feldman et al. 2018',
             xy = (108, 15), xycoords = 'data',
@@ -119,7 +115,6 @@ ax.set_xlabel('Number of iterations $T$')
 ax.set_ylabel('Theoretical privacy level $\epsilon$')
 ax.grid(True)
 fig.tight_layout()
-# fig.legend(loc = (0.15, 0.647), fontsize=13)
 
 plt.savefig('figure_1.pdf', format='pdf', dpi=600)
 plt.show()

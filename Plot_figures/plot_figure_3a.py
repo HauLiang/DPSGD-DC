@@ -10,6 +10,7 @@ from matplotlib.textpath import TextPath
 from matplotlib.transforms import Affine2D
 
 
+# --------
 def draw_brace(ax, x, y_start, y_end, text=None):
     path = TextPath((0, 0), r"$\}$", size=1.2, prop=dict(size=15))
     trans = Affine2D().scale(0.1, y_end - y_start).translate(x, (y_start + y_end) / 2)
@@ -29,6 +30,7 @@ font = {'family': 'Times New Roman',
 mpl.rc('font', **font)
 
 
+# Plot figure
 fig, ax = plt.subplots()
 
 batch_size = 400
@@ -40,7 +42,7 @@ epochs = np.array([50, 100, 150, 200, 250, 300, 350, 400,450,500,550,600,650,700
 reds = [plt.cm.Reds(i) for i in np.linspace(0.6, 1.0, 6)]
 blues = [plt.cm.Blues(i) for i in np.linspace(0.4, 0.8, 6)]
 
-i=-1
+i = -1
 
 for D_index in D:
     file_name = f'./privacy_level_with_D/epsilon_results_{batch_size2}_D_{D_index}.txt'
@@ -60,15 +62,13 @@ for D_index in D:
 
         data = np.array(data).T
 
-        i +=1
+        i += 1
         print('Handling the {}-th file'.format(i+1))
         if i+1 == 1:
             ax.plot(epochs, np.mean(data, axis=1), '-', color=reds[5], marker='o', markersize = 7, linewidth=2.5, label=r"D$=${}".format(D_index))
 
-
         elif i+1 == 2:
             ax.plot(epochs, np.mean(data, axis=1), '--', color=reds[4], marker='s', markersize = 7, linewidth=2.5, label=r"D$=${}        b$=$100".format(D_index))
-
 
         if i +1== 3:
             ax.plot(epochs, np.mean(data, axis=1), '-.', color=reds[3], marker='D', markersize = 7, linewidth=2.5, label=r"D$=${}".format(D_index))
@@ -165,7 +165,6 @@ _ = ax.annotate('D$=$20',
             xy = (700, 0.59), xycoords = 'data',
             xytext = (22, -87), textcoords = 'offset points', fontsize = 16,
             arrowprops=dict(arrowstyle='-|>',color = 'black', lw = 1.5, connectionstyle="arc3,rad=0"))
-
 
 _ = ax.annotate('D$=$100',
             xy = (450, 1.17), xycoords = 'data',

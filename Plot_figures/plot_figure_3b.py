@@ -1,14 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import matplotlib
-from matplotlib.patches import Ellipse
 from scipy.optimize import minimize_scalar
-
 from matplotlib.patches import Ellipse
-from matplotlib.patches import PathPatch
-from matplotlib.textpath import TextPath
-from matplotlib.transforms import Affine2D
 
 
 # ==============================
@@ -21,12 +15,10 @@ n = 1000
 eta = 0.1
 
 b_set = np.array([100, 400])
-D_set = np.array([2.0, 2.5, 3.0])   # 真正用于计算的 D；标签里用的是 20/60/100
+D_set = np.array([2.0, 2.5, 3.0])
 our = np.zeros((len(b_set) * len(D_set), len(E)))
 
-# ==============================
-# ② 计算 our 与 normal_our
-#    等价于 Matlab 里的 get_our + 循环
+
 # ==============================
 flag = 0
 for i in range(len(b_set)):
@@ -35,7 +27,6 @@ for i in range(len(b_set)):
     for j in range(len(D_set)):
         D = D_set[j]
 
-        # 对应 Matlab get_our 里的 privacy
         # privacy = @(beta) 2*alpha*C^2/beta/b/n/sigma^2 + alpha*(1+eta*L)^2*D^2/2/sigma^2/(1-beta);
         def privacy(beta):
             return (
@@ -43,12 +34,9 @@ for i in range(len(b_set)):
                 + alpha * (1 + eta * L)**2 * D**2 / (2 * sigma**2 * (1 - beta))
             )
 
-        # [~, upper] = fminbnd(privacy, 0, 1);
         res = minimize_scalar(privacy, bounds=(1e-12, 1 - 1e-12), method='bounded')
         upper = res.fun
 
-        # our = 8*alpha*C^2/n/n/sigma^2*T;
-        # our = min(our,upper);
         cur = 8 * alpha * C**2 / (n**2 * sigma**2) * T
         cur = np.minimum(cur, upper)
 
@@ -79,7 +67,7 @@ color_set = ["darkgoldenrod", "darkblue", "darkorange", "darkred", "darkcyan", "
 label_set = ["b$=$100","b$=$400"]
 D_set = np.array(["D=20","D=60","D=100"])
 
-reds = [plt.cm.Reds(i) for i in np.linspace(0.6, 1.0, 6)]  # 6种红色，从浅到深
+reds = [plt.cm.Reds(i) for i in np.linspace(0.6, 1.0, 6)]
 blues = [plt.cm.Blues(i) for i in np.linspace(0.4, 0.8, 6)]
 
 line_set = ['-', '--', '-.', ':', (0, (3, 2, 1, 5)), (0, (3, 5, 1, 5))]
@@ -145,7 +133,6 @@ _ = ax.annotate('b$=$400',
             xy = (370, 0.67), xycoords = 'data',
             xytext = (-33, 36), textcoords = 'offset points', fontsize = 16,
             arrowprops=dict(arrowstyle='-|>',color = 'black', lw = 1.5, connectionstyle="arc3,rad=0"))
-
 
 _ = ax.annotate('D$=$100',
             xy = (600, 1), xycoords = 'data',
