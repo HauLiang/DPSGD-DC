@@ -1,0 +1,7 @@
+# Run Attack
+
+python attack.py 
+
+python attack.py --target_scheme 'dp' --target_dp_noise_sigma 1e-4 
+
+python attack.py --mc_runs 1 --batch_size 100 --epochs 1 --attack_epochs 1
