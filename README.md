@@ -29,6 +29,10 @@ python attack.py
 By using this comment, the dataset will be saved in the `data` folder, and the experimental results will be saved in the `output` folder. 
 
 
+## Poster
+<img src="poster.jpg"> 
+
+
 ##
 
 This code is based on the code available from
