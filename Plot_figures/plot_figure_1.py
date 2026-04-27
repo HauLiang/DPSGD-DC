@@ -25,8 +25,8 @@ feld = 2 * alpha * C**2 / (b**2 * sigma**2) * T
 compos = 8 * alpha * C**2 / (n**2 * sigma**2) * T
 
 # Altschuler & Talwar 2022
-apple_bound = 8 * alpha * C**2 / (n**2 * sigma**2) * D * n / eta / C
-apple = np.minimum(compos, apple_bound)
+alt_bound = 8 * alpha * C**2 / (n**2 * sigma**2) * D * n / eta / C
+alt = np.minimum(compos, alt_bound)
 
 # Kong & Ribero 2024
 m = 1.0
@@ -72,7 +72,7 @@ T = np.arange(0, 201)
 
 ax.plot(T, feld, '-.', color='darkgoldenrod', linewidth=2.5, label="Feldman et al. 2018".format(1))
 ax.plot(T, compos, '--', color='darkblue', linewidth=2.5, label="Mironov 2017 + Mironov et al. 2019".format(1))
-ax.plot(T, apple, '-.', color='darkorange', linewidth=2.5, label="Altschuler & Talwar 2022".format(1))
+ax.plot(T, alt, '-.', color='darkorange', linewidth=2.5, label="Altschuler & Talwar 2022".format(1))
 ax.plot(T, kong, ':', color='darkred', linewidth=2.5, label="Kong & Ribero 2024".format(1))
 ax.plot(T, our, '-', color='darkcyan', linewidth=2.5, label="Ours (Theorem 3.4)".format(1))
 
