@@ -32,7 +32,7 @@ apple = np.minimum(compos, apple_bound)
 m = 1.0
 kong_scalar = (
     alpha / (2 * sigma**2)
-    * (D * np.sqrt(1 + 2 * eta * m * (1 + m / 2 / (L + m))) + 2 * eta * C / b) ** 2
+    * (D * np.sqrt(2) * np.sqrt(1 + 2 * eta * m * (1 + m / 2 / (L + m))) + 2 * eta * C / b) ** 2
     / eta**2
 )
 kong = np.ones_like(T) * kong_scalar
